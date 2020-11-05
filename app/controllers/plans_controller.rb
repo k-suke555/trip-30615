@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @plans = Plan.order('created_at DESC')
   end
 
   def new
