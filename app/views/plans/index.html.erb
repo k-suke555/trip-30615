@@ -125,18 +125,18 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿プラン', "#", class: "subtitle" %>
     <ul class='plan-lists'>
-
+      <%  @plans.each do |plan| %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='plan-img-content'>
-          <%= image_tag "plan-sample.png", class: "plan-img" %>
+          <%= image_tag plan.image, class: "plan-img" %>
         </div>
         <div class='plan-info'>
           <h3 class='plan-name'>
-            <%= "Plan名" %>
+            <%= plan.title %>
           </h3>
           <div class='plan-area'>
-            <span><%= "ジャンル" %><br><%= '地域' %></span>
+            <span><%= plan.area.name %><br></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -145,7 +145,8 @@
         </div>
         <% end %>
       </li>
-
+      <% end %>
+      <% if @plans.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "plan-img" %>
@@ -163,6 +164,7 @@
         </div>
         <% end %>
       </li>
+      <% end %>
     </ul>
   </div>
 </div>
