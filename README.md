@@ -21,11 +21,11 @@
 | area_id                 | integer    | null: false                    |
 | lunch_title             | string     | null: false                    |
 | lunch_description       | text       | null: false                    |
-| lunch-type              | integer    | null: false                    |
+| lunch-type_id           | integer    | null: false                    |
 | lunch_price_id          | integer    | null: false                    |
 | afternoon_title         | string     | null: false                    |
 | afternoon_description   | text       | null: false                    |
-| afternoon_type          | integer    | null: false                    |
+| afternoon_type_id       | integer    | null: false                    |
 | afternoon_period_id     | integer    | null: false                    |
 | afternoon_price_id      | integer    | null: false                    |
 | user                    | references | null: false, foreign_key: true |
