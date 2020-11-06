@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_plan, only: [:show, :edit, :update]
+  before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   def index
     @plans = Plan.order('created_at DESC')
@@ -31,6 +31,15 @@ class PlansController < ApplicationController
       redirect_to plan_path(@plan)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @plan.user_id == current_user.id
+      @plan.destroy
+      redirect_to action: :index
+    else
+      redirect_to action: :index
     end
   end
 
