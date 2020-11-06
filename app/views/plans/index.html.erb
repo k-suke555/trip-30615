@@ -127,7 +127,7 @@
     <ul class='plan-lists'>
       <%  @plans.each do |plan| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to plan_path(plan) do %>
         <div class='plan-img-content'>
           <%= image_tag plan.image, class: "plan-img" %>
         </div>
