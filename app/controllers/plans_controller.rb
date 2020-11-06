@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @plans = Plan.order('created_at DESC')
@@ -16,6 +16,10 @@ class PlansController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @plan = Plan.find(params[:id])
   end
 
   private

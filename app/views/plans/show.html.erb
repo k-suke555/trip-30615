@@ -1,0 +1,120 @@
+<%= render "shared/header" %>
+
+<%# プランの概要 %>
+<div class="plan-show">
+  <div class="plan-box">
+    <h2 class="name">
+      <%= @plan.title %>
+    </h2>
+    <div class='plan-img-content'>
+      <%= image_tag @plan.image,class:"plan-box-img" %>
+    </div>
+    <div class="plan-area-box">
+      <span class="plan-area-name">
+        <%= @plan.area.name %>
+      </span>
+      <span class="plan-nickname">
+        投稿者  <%= @plan.user.nickname %>
+      </span>
+    </div>
+
+    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+     <% if current_user == @plan.user  %>
+      <div class="plan-show-btn">
+      <%= link_to 'プランの編集', "#", method: :get, class: "plan-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', "#", method: :delete, class:'plan-destroy' %>
+      </div>
+    <% end %>
+
+    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+
+    <div class="plan-explain-box">
+      <span><%= "ランチプラン" %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-plan">ランチプラン名</th>
+          <td class="detail-value"><%= @plan.lunch_title %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">ランチプランの説明</th>
+          <td class="detail-value"><%= @plan.lunch_description %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">ランチプランのジャンル</th>
+          <td class="detail-value"><%= @plan.lunch_type.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">ランチプランの予想金額</th>
+          <td class="detail-value"><%= @plan.lunch_price.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="plan-explain-box">
+      <%= "午後のプラン" %>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-plan">午後のプラン名</th>
+          <td class="detail-value"><%= @plan.afternoon_title %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">午後のプランの説明</th>
+          <td class="detail-value"><%= @plan.afternoon_description %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">午後のジャンル</th>
+          <td class="detail-value"><%= @plan.afternoon_type.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">午後の予定金額</th>
+          <td class="detail-value"><%= @plan.afternoon_price.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-plan">午後の予定時間</th>
+          <td class="detail-value"><%= @plan.afternoon_period.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切なプランの通報</span>
+      </div>
+    </div>
+  </div>
+  <%# /プランの概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-plan-btn">
+      ＜ 前のプラン
+    </a>
+    <a href="#" class="change-plan-btn">
+      後ろのプラン ＞
+    </a>
+  </div>
+  <a href="#" class='another-plan'><%= "プランのカテゴリー名" %>をもっと見る</a>
+</div>
+
+<%= render "shared/footer" %>
