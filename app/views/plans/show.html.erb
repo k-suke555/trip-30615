@@ -18,16 +18,13 @@
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
      <% if current_user == @plan.user  %>
       <div class="plan-show-btn">
       <%= link_to 'プランの編集', edit_plan_path, method: :get, class: "plan-red-btn" %>
       <p class='or-text'>or</p>
-      <%= link_to '削除', "#", method: :delete, class:'plan-destroy' %>
+      <%= link_to '削除', plan_path(@plan.id), method: :delete, class:'plan-destroy' %>
       </div>
     <% end %>
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="plan-explain-box">
       <span><%= "ランチプラン" %></span>
