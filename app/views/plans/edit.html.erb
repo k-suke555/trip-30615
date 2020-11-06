@@ -1,0 +1,147 @@
+<%# cssは計画投稿のものを併用しています。
+app/assets/stylesheets/plans/new.css %>
+
+<div class="plans-sell-contents">
+  <header class="plans-sell-header">
+    <%= link_to image_tag('trip-logo-color.png' , size: '185x50'), "/" %>
+  </header>
+  <div class="plans-sell-main">
+    <h2 class="plans-sell-title">プランの情報を入力</h2>
+    <%= form_with(model:@plan, local: true) do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+    <%# プラン名 %>
+    <div class="new-plans">
+      <div class="weight-bold-text">
+        プラン名（このプランに名前をつけましょう）
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"plans-text", id:"plan-name", placeholder:"プラン名（必須 40文字まで)", maxlength:"40" %>
+      <div class="weight-bold-text">
+        地域（このプランのエリアを選んでください）
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+    </div>
+    <%# /プラン名 %>
+    <%# プラン画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        プラン画像(ランチか午後の写真を投稿しましょう)
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"plan-image" %>
+      </div>
+    </div>
+    <%# /プラン画像 %>
+    <%# ランチプラン名とプラン説明 %>
+    <div class="new-plans">
+      <div class="weight-bold-text">
+        ランチプラン名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :lunch_title, class:"plans-text", id:"plan-name", placeholder:"ランチプラン名（必須 40文字まで）（このランチプランに名前をつけましょう）", maxlength:"40" %>
+      <div class="plans-explain">
+        <div class="weight-bold-text">
+          ランチプランの説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :lunch_description, class:"plans-text", id:"plan-info", placeholder:"ランチプランの説明（必須 1,000文字まで）（お店の名前やおすすめ料理、おすすめポイントを載せましょう）例）大名にあるカレー屋です。スパイシーですが辛さも調節できるのでお子さんにもおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /ランチプラン名とプラン説明 %>
+    <%# ランチプランの詳細 %>
+    <div class="plans-detail">
+      <div class="weight-bold-text">ランチプランの詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          ランチのジャンル
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:lunch_type_id, LunchType.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+        <div class="weight-bold-text">
+          ランチの予定金額
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:lunch_price_id, LunchPrice.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+      </div>
+    </div>
+    <%# /ランチプランの詳細 %>
+    <%# 午後のプラン名とプラン説明 %>
+    <div class="new-plans">
+      <div class="weight-bold-text">
+        午後のプラン名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :afternoon_title, class:"plans-text", id:"plan-name", placeholder:"プラン名（必須 40文字まで)（この午後のプランに名前をつけましょう）", maxlength:"40" %>
+      <div class="plans-explain">
+        <div class="weight-bold-text">
+          午後のプランの説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :afternoon_description, class:"plans-text", id:"plan-info", placeholder:"プランの説明（必須 1,000文字まで）（施設や場所、おすすめポイントを載せましょう）例）市役所の近くにある公園です。平日は人も少なく広場で遊べ、週末はイベントもやっているのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /午後のプラン名とプラン説明 %>
+
+    <%# 午後のプランの詳細 %>
+    <div class="plans-detail">
+      <div class="weight-bold-text">午後のプランの詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          午後のジャンル
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:afternoon_type_id, AfternoonType.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+        <div class="weight-bold-text">
+          午後の予定金額
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:afternoon_price_id, AfternoonPrice.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+        <div class="weight-bold-text">
+          午後の予定時間
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:afternoon_period_id, AfternoonPeriod.all, :id, :name, {}, {class:"select-box", id:"plan-category"}) %>
+      </div>
+    </div>
+    <%# /ランチプランの詳細 %>
+
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        <a href="#">投稿に関する注意</a>
+        を必ずご確認ください。
+      </p>
+      <p class="sentence">
+        また、投稿をもちまして
+        <a href="#">利用規約</a>
+        に同意したことになります。
+      </p>
+    </div>
+    <%# /注意書き %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="plans-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">TriPlanning利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('trip-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎TriPlanning,Inc.
+    </p>
+  </footer>
+</div>
