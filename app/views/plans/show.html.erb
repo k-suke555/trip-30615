@@ -18,7 +18,7 @@
       </span>
     </div>
 
-     <% if current_user == @plan.user  %>
+    <% if current_user == @plan.user  %>
       <div class="plan-show-btn">
       <%= link_to 'プランの編集', edit_plan_path, method: :get, class: "plan-red-btn" %>
       <p class='or-text'>or</p>
@@ -88,20 +88,34 @@
     </div>
   </div>
   <%# /プランの概要 %>
-
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <% unless current_user %>
+    ＜ 参考になったらログインしてコメントをしましょう ＞
+    <% end %>
+    <% if current_user %>
+      <%= form_with(model: [@plan, @comment], local: true) do |f|%>
+        <div class="field">
+          <%= f.label :text, "コメント" %><br />
+          <%= f.text_field :text %>
+        </div>
+        <%= f.submit "送信する", class: :"comment-flag-icon"  %>
+      <% end %>
+    <% end %> 
+  </div>
+  <div class="comment-under">
+    <ul class="comments_lists">
+      <span><%= "＜コメント一覧＞" %></span>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <li class="comments_list">
+            <p>
+            <%= comment.text %>
+            <%= link_to comment.user.nickname, class: :comment_user %>
+            </p>
+          </li>
+        <% end %>  
+      <% end %> 
+    </ul>
   </div>
   <div class="links">
     <a href="#" class="change-plan-btn">
@@ -113,5 +127,4 @@
   </div>
   <a href="#" class='another-plan'><%= "プランのカテゴリー名" %>をもっと見る</a>
 </div>
-
 <%= render "shared/footer" %>
