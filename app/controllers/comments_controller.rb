@@ -6,11 +6,12 @@ class CommentsController < ApplicationController
     else
       @plan = @comment.plan
       @comments = @plan.comments
-      render "plans/show"
+      render 'plans/show'
     end
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:text).merge(user_id: current_user.id, plan_id: params[:plan_id])
   end
