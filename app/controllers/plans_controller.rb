@@ -20,6 +20,9 @@ class PlansController < ApplicationController
   end
 
   def show
+    @plan = Plan.find(params[:id])
+    @comment = Comment.new
+    @comments = @plan.comments.includes(:user)
   end
 
   def edit

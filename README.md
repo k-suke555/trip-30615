@@ -40,6 +40,7 @@
 | ------------  | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
 | plan          | references | null: false, foreign_key: true |
+| text          | text       | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user

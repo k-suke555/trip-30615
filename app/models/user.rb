@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :plans
-  has_many :comments
+  has_many :comments, dependent: :destroy
   with_options presence: true do
     validates :password, format: { with: /\A[a-z0-9]+\z/i }
     validates :nickname
