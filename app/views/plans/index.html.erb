@@ -124,48 +124,9 @@
   <div class='plan-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿プラン', "#", class: "subtitle" %>
-    <ul class='plan-lists'>
-      <%  @plans.each do |plan| %>
-      <li class='list'>
-        <%= link_to plan_path(plan) do %>
-        <div class='plan-img-content'>
-          <%= image_tag plan.image, class: "plan-img" %>
-        </div>
-        <div class='plan-info'>
-          <h3 class='plan-name'>
-            <%= plan.title %>
-          </h3>
-          <div class='plan-area'>
-            <span><%= plan.area.name %><br></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <% end %>
-      <% if @plans.length == 0 %>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "plan-img" %>
-        <div class='plan-info'>
-          <h3 class='plan-name'>
-            プランを投稿してね！
-          </h3>
-          <div class='plan-area'>
-            <span>アウトドア<br>福岡市</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
+    <div class= 'plan-share'>
+    <%= render partial: 'plan', collection: @plans %>
+    </div>
   </div>
 </div>
 <%= link_to new_plan_path, class: 'plan-btn' do %>

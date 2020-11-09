@@ -14,7 +14,7 @@
         <%= @plan.area.name %>
       </span>
       <span class="plan-nickname">
-        投稿者  <%= @plan.user.nickname %>
+        投稿者  <%= link_to @plan.user.nickname, "/users/#{@plan.user_id}" %>
       </span>
     </div>
 
@@ -110,7 +110,7 @@
           <li class="comments_list">
             <p>
             <%= comment.text %>
-            <%= link_to comment.user.nickname, class: :comment_user %>
+            <%= link_to comment.user.nickname, "/users/#{comment.user_id}", class: :comment_user %>
             </p>
           </li>
         <% end %>  

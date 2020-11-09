@@ -223,33 +223,12 @@ a {
   padding: 10vh 0;
 }
 
-.plan-contents>.title {
-  font-size: 5vh;
-  line-height: 1.4;
-  font-weight: bold;
-}
-
-.plan-contents>.subtitle {
-  font-size: 3vh;
-  margin: 1vh 0;
-  text-decoration: none;
-  color: #3ccace;
-  font-weight: bold;
-}
-
-.plan-lists {
-  width: 100vw;
+.plan-share{
+  width: 100vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-
-.plan-lists>.list {
-  width: 37vh;
-  padding: 1vw;
-  background-color: #FFF;
-}
-
 
 .plan-img-content {
   position: relative;
@@ -275,7 +254,6 @@ a {
   display: flex;
   justify-content: space-between;
 }
-
 
 .star-btn {
   display: flex;

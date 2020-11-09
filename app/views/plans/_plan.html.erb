@@ -1,0 +1,20 @@
+<%= link_to plan_path(plan) do %>
+  <div class='plan-img-content'>
+    <%= image_tag plan.image, class: "plan-img" %>
+  </div>
+  <div class='plan-info'>
+    <h3 class='plan-name'>
+      <%= plan.title %>
+    </h3>
+    <div class='plan-area'>
+      <span><%= plan.area.name %><br></span>
+      <div class='star-btn'>
+        <%= image_tag "star.png", class:"star-icon" %>
+        <span class='star-count'>0</span>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
