@@ -33,16 +33,8 @@
   padding-left: 10px;
 }
 
-.search-button {
-  width: 5vh;
-  border: 0;
-  cursor: pointer;
-  background-color: #3ccace;
-  padding: 8px;
-}
-
 .search-icon {
-  width: 100%;
+  width: 30%;
 }
 
 .nav {

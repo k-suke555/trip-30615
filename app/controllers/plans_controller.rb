@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,6 +44,10 @@ class PlansController < ApplicationController
     else
       redirect_to action: :index
     end
+  end
+
+  def search
+    @plans = Plan.search(params[:keyword])
   end
 
   private
