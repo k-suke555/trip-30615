@@ -4,9 +4,11 @@
   <div class='plan-contents'>
     <h2 class='title'>検索結果</h2>
     <div class= 'plan-share'>
-      <% @plans.each do |plan| %>
-        <%= render partial: "plan", locals: { plan: plan } %>
-      <% end %>
+      <ul class='plan-lists'>
+        <% @plans.each do |plan| %>
+          <%= render partial: "plan", locals: { plan: plan } %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
