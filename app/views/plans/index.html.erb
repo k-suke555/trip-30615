@@ -4,13 +4,13 @@
   <%# 画面上部の「人生を変える」帯部分 %>
   <div class='title-contents'>
     <h2 class='service-title'>
-      旅を作る
+      休日に新しい発見を
     </h2>
     <p class='service-explain'>
-      TriPlanning(トリップランニング)はだれでもかんたんに投稿できる
+      TriPlanning(トリップランニング)は休日プランの投稿・検索ができる
     </p>
     <p class='service-explain'>
-      遅く起きた朝にちょうどいい旅プラン投稿アプリです
+      遅く起きた朝にちょうどいい旅プラン投稿・検索アプリです
     </p>
     <div class='store-btn'>
       <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
@@ -18,70 +18,6 @@
     </div>
   </div>
   <%# /画面上部の「旅を作る」帯部分  %>
-
-  <%# TriPlanningが選ばれる3つの理由部分 %>
-  <div class='select-reason-contents'>
-    <h2 class='title'>
-      TriPlanningが選ばれる3つの理由
-    </h2>
-    <ul class='reason-lists'>
-      <li class='list'>
-        <%= image_tag "trip-intro01.png", class:"list-pict" %>
-        <span class='reason-list-number'>1</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>3分</span>
-          ですぐに投稿
-        </h3>
-        <p class='reason-list-description'>
-          スマホで入力するだけで簡単に投稿できる！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "trip-intro02.png", class:"list-pict" %>
-        <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>シンプル</span>
-          で使いやすい
-        </h3>
-        <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索もスムーズ！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "trip-intro03.png", class:"list-pict" %>
-        <span class='reason-list-number'>3</span>
-        <h3 class='reason-list-text'>
-          利用料
-          <span class='reason-list-blue-text'>無料</span>
-        </h3>
-        <p class='reason-list-description'>
-          せっかくの休日、やること決めてなかったという時に便利！
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /TriPlanningが選ばれる3つの理由部分 %>
-
-  <%# 画面中央の「会員数日本一位」帯部分 %>
-  <div class='ad-contents'>
-    <h2 class='ad-title'>
-      会員数日本一位
-    </h2>
-    <p class='ad-explain'>
-      TriPlannningは、旅行アプリで最も人気。
-    </p>
-    <p class='ad-explain'>
-      投稿数も業界最多です！
-    </p>
-    <p class='ad-explain'>
-      知らなかった穴場スポットに出会えるかもしれません。
-    </p>
-    <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
-    </div>
-  </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
   <%# アプリの特徴 %>
   <div class='feature-contents'>
@@ -95,16 +31,17 @@
           簡単に検索ができる
         </h3>
         <p class='feature-list-description'>
-          スマホひとつで、いつでもどこでも検索が可能！
+          お昼前からでも大丈夫！
+          <br>スマホから検索して穴場スポットに行きましょう！
         </p>
       </li>
       <li class='list'>
         <%= image_tag "trip-intro05.png", class:"list-pict" %>
         <h3 class='feature-list-text'>
-          投稿したらすぐに反映
+          おすすめの場所を共有
         </h3>
         <p class='feature-list-description'>
-          新しい観光スポットも投稿されてるかもしれません。
+          お気に入りやおすすめの過ごし方を紹介しましょう
         </p>
       </li>
       <li class='list'>
@@ -113,7 +50,8 @@
           福岡県内に対応
         </h3>
         <p class='feature-list-description'>
-          ※エリア随時拡大予定
+          知らなかった近所の穴場スポットが見つかるかもしれません。
+          <br>※エリア随時拡大予定
         </p>
       </li>
     </ul>
@@ -122,10 +60,11 @@
 
   <%# プラン一覧 %>
   <div class='plan-contents'>
-    <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿プラン', "#", class: "subtitle" %>
+    <h2 class='title'>ピックアッププラン</h2>
     <div class= 'plan-share'>
-    <%= render partial: 'plan', collection: @plans %>
+      <ul class='plan-lists'>
+        <%= render partial: 'plan', collection: @plans %>
+      </ul>
     </div>
   </div>
 </div>
