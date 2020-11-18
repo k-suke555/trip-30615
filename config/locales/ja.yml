@@ -1,0 +1,26 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+     plan:
+       title: プラン名
+       area: 地域
+       area_id: 地域
+       lunch_title: ランチプラン名
+       lunch_description: ランチプランの説明 
+       lunch_type: ランチのジャンル
+       lunch_price: ランチの予定金額
+       lunch_type_id: ランチのジャンル
+       lunch_price_id: ランチの予定金額
+       afternoon_title: 午後のプラン名
+       afternoon_description: 午後のプランの説明
+       afternoon_type: 午後のジャンル
+       afternoon_price: 午後の予定金額
+       afternoon_period: 午後の予定時間
+       afternoon_type_id: 午後のジャンル
+       afternoon_price_id: 午後の予定金額
+       afternoon_period_id: 午後の予定時間
+       image: 画像
+
+       

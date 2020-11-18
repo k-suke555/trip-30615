@@ -8,5 +8,5 @@ class Area < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :plans    
+  has_many :plans
 end
