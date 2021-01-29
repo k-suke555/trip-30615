@@ -77,13 +77,19 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn">
-        <% if Favorite.find_by(user_id: current_user.id, plan_id: @plan.id) %>
-          <%= link_to("お気に入り済み", "/favorites/#{@plan.id}/destroy", {method: "post"})%>
-        <% else %>
-          <%= link_to("お気に入りに登録する", "/favorites/#{@plan.id}/create", {method: "post"}) %>
-        <% end %>
-      </div>
+      <% if current_user %>
+        <div class="favorite-btn">
+          <% if Favorite.find_by(user_id: current_user.id, plan_id: @plan.id) %>
+            <%= link_to("お気に入り済み", "/favorites/#{@plan.id}/destroy", {method: "post"})%>
+          <% else %>
+            <%= link_to("お気に入りに登録する", "/favorites/#{@plan.id}/create", {method: "post"}) %>
+          <% end %>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+            <span class='star-count'><%= @favorites_count %></span>
+          </div>
+        </div>
+      <% end %>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
         <span>不適切なプランの通報</span>
