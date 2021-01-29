@@ -23,6 +23,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @comment = Comment.new
     @comments = @plan.comments.includes(:user)
+    @favorites_count = Favorite.where(plan_id: @plan.id).count
   end
 
   def edit
