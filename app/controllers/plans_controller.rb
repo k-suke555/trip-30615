@@ -1,9 +1,9 @@
 class PlansController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :plan_index, only: [:index, :fuku_search, :kita_search, :chikugo_search, :chikuho_search]
 
   def index
-    @plans = Plan.order('created_at DESC')
   end
 
   def new
@@ -51,6 +51,18 @@ class PlansController < ApplicationController
     @plans = Plan.search(params[:keyword])
   end
 
+  def fuku_search
+  end
+
+  def kita_serach
+  end
+
+  def chikugo_search
+  end
+
+  def chikuho_serach
+  end
+
   private
 
   def plan_params
@@ -59,5 +71,9 @@ class PlansController < ApplicationController
 
   def set_plan
     @plan = Plan.find(params[:id])
+  end
+
+  def plan_index
+    @plans = Plan.order('created_at DESC')
   end
 end

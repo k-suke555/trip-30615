@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :plans do
     resources :comments, only: :create
     collection do
-      get 'search'
+      get 'search', 'fuku_search', 'kita_search', 'chikugo_search', 'chikuho_search'
     end
   end
   resources :users, only: :show

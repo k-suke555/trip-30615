@@ -9,8 +9,7 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'ジャンル', "#", class: "category-list" %></li>
-      <li><%= link_to '地域', "#", class: "brand-list" %></li>
+      <li><div class="area-list" id="area-lists" >地域一覧</div></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
@@ -20,6 +19,14 @@
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
       <% end %>
+    </ul>
+  </div>
+  <div class="hiden-lists">
+    <ul class="area-show-lists hiden" id="area-show-lists">
+      <li><%= link_to '福岡地区', fuku_search_plans_path %></li>
+      <li><%= link_to '北九州地区', kita_search_plans_path %></li>
+      <li><%= link_to '筑後地区', chikugo_search_plans_path %></li>
+      <li><%= link_to '筑豊地区', chikuho_search_plans_path %></li>
     </ul>
   </div>
 </header>
