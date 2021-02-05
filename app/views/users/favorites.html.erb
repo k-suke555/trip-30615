@@ -1,34 +1,33 @@
 <%= render "shared/header" %>
 <div class='plan-contents'>
-<h2 class='title'><%= @user.nickname %>さんのお気に入り一覧</h2>
-    <div class= 'plan-share'>
-      <ul class='plan-lists'>
-
-        <% @favorites.each do |favorite| %>
-    <% plan = Plan.find_by(id: favorite.plan_id)%>
+  <h2 class='title'><%= @user.nickname %>さんのお気に入り一覧</h2>
+  <div class= 'plan-share'>
+    <ul class='plan-lists'>
+      <% @favorites.each do |favorite| %>
+        <% plan = Plan.find_by(id: favorite.plan_id)%>
           <li class='list'>
-              <%= link_to plan_path(plan) do %>
-    <div class="plan-img-content">
-      <%= image_tag (plan.image), class: "plan-img" %>
-    </div>
-    <div class='plan-info'>
-      <h3 class='plan-name'>
-      <%= plan.title %>
-    </div>
-    <div class='plan-area'>
-      <span><%= plan.area.name %><br></span>
-      <div class='star-btn'>
-        <%= image_tag "star.png", class:"star-icon" %>
-        <span class='star-count'>0</span>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
-</li>
-      </ul>
-    </div>
+            <%= link_to plan_path(plan) do %>
+              <div class="plan-img-content">
+                <%= image_tag (plan.image), class: "plan-img" %>
+              </div>
+              <div class='plan-info'>
+                <h3 class='plan-name'>
+                <%= plan.title %>
+              </div>
+              <div class='plan-area'>
+                <span><%= plan.area.name %><br></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
   <% if @favorites.length == 0 %>
-  まだお気に入りが登録されていないようです。
+    まだお気に入りが登録されていないようです。
   <% end %>
 </div>
 <%= render "shared/footer" %>
